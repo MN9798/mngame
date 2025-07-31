@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简易打怪闯关小游戏</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <h1>简易打怪闯关小游戏</h1>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="600" height="400"></canvas>
+        <div id="ui">
+            <span id="level">关卡: 1</span>
+            <span id="score">得分: 0</span>
+            <span id="hp">生命: 3</span>
+        </div>
+        <button id="restartBtn" style="display:none;">重新开始</button>
+        <div id="joystick-container">
+            <div id="joystick-base">
+                <div id="joystick-stick"></div>
+            </div>
+        </div>
+        <button id="shootBtn">射击</button>
+    </div>
+    <script src="scripts/game.js"></script>
+</body>
+</html>

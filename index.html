@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>网页小游戏</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #222 0%, #4a6fa1 100%);
+            overflow: hidden;
+        }
+        h1 {
+            color: #fff;
+        }
+        .snow {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+        }
+        a {
+            color: #40a9ff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #1890ff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="snow"></canvas>
+    <h1>欢迎来到MN的网页小游戏网站！</h1>
+    <ul style="font-size:1.2em;line-height:2; position:relative; z-index:1;">
+        <li><a href="/snake-game/src/index.html" target="_blank">贪吃蛇小游戏</a></li>
+        <li><a href="/monster-game/src/index.html" target="_blank">简易打怪闯关小游戏</a></li>
+    </ul>
+    <script>
+    // 简单CSS+JS下雪效果
+    const snowCanvas = document.querySelector('.snow');
+    const ctx = snowCanvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    let snows = [];
+    function resizeSnow() {
+        W = window.innerWidth; H = window.innerHeight;
+        snowCanvas.width = W; snowCanvas.height = H;
+    }
+    window.addEventListener('resize', resizeSnow);
+    function createSnow() {
+        for(let i=0;i<60;i++){
+            snows.push({
+                x: Math.random()*W,
+                y: Math.random()*H,
+                r: 1+Math.random()*3,
+                d: 1+Math.random()*1.5,
+                drift: Math.random()*2*Math.PI
+            });
+        }
+    }
+    function drawSnow() {
+        ctx.clearRect(0,0,W,H);
+        ctx.fillStyle = 'rgba(255,255,255,0.85)';
+        for(let s of snows){
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, 2*Math.PI);
+            ctx.fill();
+        }
+        updateSnow();
+        requestAnimationFrame(drawSnow);
+    }
+    function updateSnow() {
+        for(let s of snows){
+            s.y += s.d;
+            s.x += Math.sin(s.drift + s.y/40)*0.7;
+            if(s.y > H+5){ s.y = -5; s.x = Math.random()*W; }
+        }
+    }
+    resizeSnow();
+    createSnow();
+    drawSnow();
+    </script>
+</body>
+</html>

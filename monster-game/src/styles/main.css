@@ -1,0 +1,91 @@
+#game-container {
+    position: relative;
+}
+#joystick-container {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 10;
+    user-select: none;
+}
+#joystick-base {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #444a;
+    border-radius: 50%;
+    margin: 10px;
+}
+#joystick-stick {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    background: #fff8;
+    border-radius: 50%;
+    border: 2px solid #888;
+    transition: left 0.05s, top 0.05s;
+}
+#shootBtn {
+    position: absolute;
+    right: 40px;
+    bottom: 70px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ff9800;
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    box-shadow: 0 2px 8px #0006;
+    z-index: 10;
+    user-select: none;
+    cursor: pointer;
+}
+#shootBtn:active {
+    background: #e65100;
+}
+body {
+    background: #222;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+}
+#game-container {
+    display: inline-block;
+    margin-top: 30px;
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #000a;
+}
+#gameCanvas {
+    background: #111;
+    display: block;
+    margin: 0 auto 20px auto;
+    border: 2px solid #555;
+    border-radius: 8px;
+}
+#ui {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+#ui span {
+    margin: 0 15px;
+}
+#restartBtn {
+    padding: 8px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#restartBtn:hover {
+    background: #388e3c;
+}
